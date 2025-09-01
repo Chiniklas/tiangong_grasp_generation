@@ -4,7 +4,7 @@
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="/home/ninad/Desktop/ycb-objects/ycb/models/003_cracker_box/google_16k/textured.obj" scale="1.0 1.0 1.0"/>
+                <mesh filename="../../urdfs/ycb-tools/models/ycb/003_cracker_box/google_16k/textured.obj" scale="1.0 1.0 1.0"/>
             </geometry>
             <material name="texture">
                 <color rgba="1.0 1.0 1.0 1.0" />
@@ -13,7 +13,7 @@
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="/home/ninad/Desktop/ycb-objects/ycb/models/003_cracker_box/google_16k/textured.obj" scale="1.0 1.0 1.0"/>
+                <mesh filename="../../urdfs/ycb-tools/models/ycb/003_cracker_box/google_16k/textured.obj" scale="1.0 1.0 1.0"/>
             </geometry>
         </collision>   
         <inertial>
