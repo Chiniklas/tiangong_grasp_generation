@@ -77,6 +77,10 @@ class GraspMiner:
                 scene = GraspitScene(self._process.graspit, robot_name, object_name, gripper)
                 # plan grasps with a standard procedure
                 plans = scene.planGrasps(max_steps=self._max_steps)
+                print(plans)
+                # p0 = plans[0]['pose']
+                # print("first plan pose (raw):", p0)
+
                 # execute grasps with different euristics
                 variants = (
                     dict(approach=False, auto_open=False),  #

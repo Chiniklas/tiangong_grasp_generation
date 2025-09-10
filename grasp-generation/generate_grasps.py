@@ -11,7 +11,8 @@ from grasp_miner import GraspMiner
 from grasp_saver import GraspSaver
 
 parser = argparse.ArgumentParser(description='Grasp mining')
-parser.add_argument('-m', '--models', nargs='*', default=['003_cracker_box_google_16k_textured_scale_1000'])
+# parser.add_argument('-m', '--models', nargs='*', default=['003_cracker_box_google_16k_textured_scale_1000'])
+parser.add_argument('-m', '--models', nargs='*', default=['cylinder'])
 # parser.add_argument('-m', '--models', nargs='*', default=['phone'])
 parser.add_argument('-l', '--models_file', type=str, default='') # one model entry per line
 parser.add_argument('-n', '--n_jobs', type=int, default=1)
@@ -92,7 +93,7 @@ def main(args):
                            change_speed=args.change_speed,
                            robot_names=[gripper_name], # ADD multiple grippers here
                            saver=saver)
-
+    # input()
     if args.n_jobs > 1:
         from joblib import Parallel, delayed
         grasp_result = Parallel(n_jobs=args.n_jobs, verbose=50)(delayed(generator)(m) for m in models)
@@ -105,6 +106,7 @@ def main(args):
                 body_name, gripper, body_grasps = info[0]
                 print("[Debug Load] {} : total {} grasps for {} robot gripper".format(body_name, len(body_grasps), gripper))
                 scene = GraspitScene(p.graspit, gripper, body_name)
+                # input()
                 for grasp in body_grasps:
                     scene.grasp(grasp['pose'], grasp['dofs'])
                     time.sleep(0.5)

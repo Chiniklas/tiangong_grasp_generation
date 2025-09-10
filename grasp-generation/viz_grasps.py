@@ -11,7 +11,8 @@ from grasp_miner import GraspMiner
 from grasp_saver import GraspSaver
 
 parser = argparse.ArgumentParser(description='Mined Grasps Viz in Graspit')
-parser.add_argument('-m', '--models', nargs='*', default=['003_cracker_box_google_16k_textured_scale_1000'])
+# parser.add_argument('-m', '--models', nargs='*', default=['003_cracker_box_google_16k_textured_scale_1000'])
+parser.add_argument('-m', '--models', nargs='*', default=['cylinder'])
 # parser.add_argument('-m', '--models', nargs='*', default=['glass'])
 parser.add_argument('-l', '--models_file', type=str, default='')
 parser.add_argument('-o', '--path_out', type=str, default='')
@@ -63,9 +64,14 @@ def main(args):
     
     print("Visualizing {} grasps for {} robot gripper".format(body, gripper))
 
-    grasps_filename = os.path.join(path_out, 'refined_{}-{}.json'.format(
-        body, 
-        gripper))
+    # grasps_filename = os.path.join(path_out, 'refined_{}-{}.json'.format(
+    #     body, 
+    #     gripper))
+    # Try refined_ prefix first, fallback to plain
+    grasps_filename = os.path.join(path_out, 'refined_{}-{}.json'.format(body, gripper))
+    if not os.path.exists(grasps_filename):
+        grasps_filename = os.path.join(path_out, '{}-{}.json'.format(body, gripper))
+
     
     if os.path.exists(grasps_filename):
         with open(grasps_filename, 'r') as grasps_file:

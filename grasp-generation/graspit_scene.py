@@ -11,7 +11,11 @@ class GraspitScene:
 
     def __init__(self, graspit, robot, body, collision_object=None):
         default_pose = Pose()
-        default_pose.position.y = 0.5 # does not matter that much!
+        # default_pose.position.y = 0.5 # does not matter that much!
+        # default_pose.orientation.w = 1
+        default_pose.position.y = 0.0 # does not matter that much!
+        default_pose.position.x = 0.0
+        default_pose.position.z = 0.1
         default_pose.orientation.w = 1
 
         graspit.clearWorld()
